@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
@@ -6,35 +7,27 @@ using UnityEngine.Animations;
 
 public class Movement : MonoBehaviourPunCallbacks
 {
-    private CharacterController charController;
-    public float movement_Speed = 3f;
-    public float gravity = 9.8f;
-    public float rotation_Speed = 0.15f;
-    public float rotateDegreesPerSecond = 180f;
-    void Awake()
+    public float speed;
+    private Rigidbody rig;
+    private Animator animator;
+    private static readonly int X = Animator.StringToHash("X");
+    private static readonly int Y = Animator.StringToHash("Y");
+
+    void Start()
     {
-        charController = GetComponent<CharacterController>();
+        rig = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (!photonView.IsMine) return;
-        Move();
-    }
-
-    void Move()
-    {
-        if (Input.GetAxis(Axis.HORIZONTAL_AXIS) < 0)
-        {
-            Vector3 moveDirection = transform.forward;
-            moveDirection.y -= gravity * Time.deltaTime;
-            charController.Move(moveDirection * movement_Speed * Time.deltaTime);
-        } else if (Input.GetAxis(Axis.HORIZONTAL_AXIS) > 0)
-        {
-            Vector3 moveDirection = -transform.forward;
-            moveDirection.y -= gravity * Time.deltaTime;
-            charController.Move(moveDirection * movement_Speed * Time.deltaTime);
-        }
+        float t_hmove = Input.GetAxis("Horizontal");
+        float t_vmove = Input.GetAxis("Vertical");
+        animator.SetFloat(X,-t_hmove);
+        animator.SetFloat(Y,-t_vmove);
+        Vector3 t_direction = new Vector3(-t_hmove, 0, -t_vmove);
+        t_direction = t_direction.normalized * speed * Time.deltaTime;
+        rig.MovePosition(transform.position + t_direction);
     }
 }
