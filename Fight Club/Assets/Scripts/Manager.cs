@@ -12,7 +12,7 @@ namespace com.SikkimeStudios.FightClub
     public class Manager : MonoBehaviourPunCallbacks
     {
         public string player_prefab;
-        public Transform spawn_point;
+        public Transform[] spawn_points;
         public CinemachineTargetGroup ctg;
         public void Start()
         { 
@@ -22,8 +22,16 @@ namespace com.SikkimeStudios.FightClub
 
         public void Spawn()
         {
-            GameObject player1 = PhotonNetwork.Instantiate(player_prefab, spawn_point.position, spawn_point.rotation);
-            ctg.AddMember(player1.transform, 1f, 0f);
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                GameObject player1 = PhotonNetwork.Instantiate(player_prefab, spawn_points[0].position, spawn_points[0].rotation);
+                ctg.AddMember(player1.transform, 1f, 0f);
+            } else if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+            {
+                GameObject player2 = PhotonNetwork.Instantiate(player_prefab, spawn_points[1].position, spawn_points[1].rotation);
+                ctg.AddMember(player2.transform, 1f, 0f);
+            }
+
         }
 
         private void Update()

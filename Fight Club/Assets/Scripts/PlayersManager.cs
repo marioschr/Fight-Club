@@ -8,6 +8,7 @@ public class PlayersManager : MonoBehaviour
 {
     private CinemachineTargetGroup ctg;
     public bool both = false;
+    private GameObject[] players;
     void Start()
     {
         ctg = GetComponent<CinemachineTargetGroup>();
@@ -18,7 +19,7 @@ public class PlayersManager : MonoBehaviour
     {
         if (!both)
         {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            players = GameObject.FindGameObjectsWithTag("Player");
             if (players.Length == 2)
             {
                 foreach (GameObject player in players)
