@@ -4,7 +4,7 @@ using UnityEngine;
 public class Movement : MonoBehaviourPunCallbacks
 {
     public Transform opponent = null;
-    private Transform camera;
+    private Transform cam;
     private Rigidbody rig;
     private Animator animator;
     private static readonly int X = Animator.StringToHash("X");
@@ -14,7 +14,11 @@ public class Movement : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        camera = GameObject.FindWithTag("MainCamera").transform;
+        cam = GameObject.FindWithTag("MainCamera").transform;
+        if (!photonView.IsMine)
+        {
+            gameObject.layer = 10;
+        }
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         FindOpponent();
@@ -34,7 +38,7 @@ public class Movement : MonoBehaviourPunCallbacks
 
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
             rig.MovePosition(transform.position + moveDir.normalized * (speed * Time.deltaTime));
         }
