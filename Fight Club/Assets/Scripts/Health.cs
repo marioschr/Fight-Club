@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviourPunCallbacks
 {
-    public int max_health = 100;
-    public int current_health;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public int maxStamina = 100;
+    public int currentStamina;
     
     // Start is called before the first frame update
     void Start()
     {
-        current_health = max_health;
+        currentHealth = maxHealth;
+        currentStamina = maxStamina;
     }
 
     // Update is called once per frame
@@ -23,7 +26,10 @@ public class Health : MonoBehaviour
     [PunRPC]
     public void TakeDamage(int p_damage)
     {
-        current_health -= p_damage;
-        Debug.Log(current_health);
+        if (photonView.IsMine)
+        {
+            currentHealth -= p_damage;
+            Debug.Log(currentHealth);
+        }
     }
 }

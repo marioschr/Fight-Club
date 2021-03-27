@@ -100,7 +100,6 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
-        Debug.Log("OnJOinedRoom");
         cachedRoomList.Clear();
 
 
