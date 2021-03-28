@@ -9,7 +9,6 @@ public class AttackPosition : MonoBehaviourPunCallbacks
 
     public Attack attack;
     private bool isColliding = false;
-    private static readonly int Attacked = Animator.StringToHash("Attacked");
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +43,6 @@ public class AttackPosition : MonoBehaviourPunCallbacks
     [PunRPC]
     private void TakeDamage(int p_damage)
     {
-        GetComponent<Animator>().SetTrigger(Attacked);
         GetComponent<Health>().TakeDamage(p_damage);
     }
 }

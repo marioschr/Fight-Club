@@ -85,7 +85,7 @@ public class Fighting : MonoBehaviourPunCallbacks
         }
         regen = StartCoroutine(RegenerateStamina());
     }
-
+    
     IEnumerator RegenerateStamina()
     {
         yield return new WaitForSeconds(1.5f);

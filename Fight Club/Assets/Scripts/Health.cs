@@ -9,7 +9,8 @@ public class Health : MonoBehaviourPunCallbacks
     public int currentHealth;
     public int maxStamina = 100;
     public int currentStamina;
-    
+    private static readonly int Attacked = Animator.StringToHash("Attacked");
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class Health : MonoBehaviourPunCallbacks
         //if (photonView.IsMine)
        // {
             currentHealth -= p_damage;
+            GetComponent<Animator>().SetTrigger(Attacked);
             Debug.Log(currentHealth);
        // }
     }
