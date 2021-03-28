@@ -26,10 +26,10 @@ public class Health : MonoBehaviourPunCallbacks
     [PunRPC]
     public void TakeDamage(int p_damage)
     {
-        if (photonView.IsMine)
-        {
+        //if (photonView.IsMine)
+       // {
             currentHealth -= p_damage;
             Debug.Log(currentHealth);
-        }
+       // }
     }
 }
