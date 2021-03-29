@@ -77,12 +77,12 @@ public class PlayerListEntry : MonoBehaviour
             {
                 PlayerColorImage.color = GameConstants.GetColor(p.GetPlayerNumber());
             }
-        }
+        }   
     }
 
     public void SetPlayerReady(bool playerReady)
     {
-        PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Ready!" : "Ready?";
+        PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Cancel" : "Ready?";
         PlayerReadyImage.enabled = playerReady;
     }
 }

@@ -3,22 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fighting : MonoBehaviourPunCallbacks
 {
     private Health health; 
     private Animator animator;
     public Attack[] attackMoves;
-    private static readonly int Left = Animator.StringToHash("Left");
-    private static readonly int Right = Animator.StringToHash("Right");
-    private static readonly int Left1 = Animator.StringToHash("Left1");
-    private static readonly int Right1 = Animator.StringToHash("Right1");
     private static readonly int Block = Animator.StringToHash("Block");
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.2f);
     private Coroutine regen;
     private static readonly int Attacking = Animator.StringToHash("Attacking");
-
+    private Image clientStaminaUI;
     void Start()
     {
         health = GetComponent<Health>();
@@ -72,28 +69,51 @@ public class Fighting : MonoBehaviourPunCallbacks
         }
     }
 
+    private float currentStamAttack = 100f;
     [PunRPC]
     void Attack(int attackID)
     {
-        animator.SetBool(Block, false);
-        animator.SetTrigger(attackMoves[attackID].trigger);
-        health.currentStamina -= attackMoves[attackID].staminaDrain;
-        Debug.Log("Current Stamina:" + health.currentStamina);
-        if (regen != null)
+        if (health.currentStamina >= attackMoves[attackID].staminaDrain)
         {
-            StopCoroutine(regen);
+            animator.SetBool(Block, false);
+            animator.SetTrigger(attackMoves[attackID].trigger);
+            currentStamAttack = health.currentStamina;
+            health.currentStamina -= attackMoves[attackID].staminaDrain;
+            clientStaminaUI.fillAmount = health.currentStamina / 100f;
+            //clientStaminaUI.fillAmount = Mathf.Lerp( currentStamAttack / health.maxStamina,health.currentStamina / (float) health.maxStamina, Time.deltaTime * 8f);
+            if (regen != null)
+            {
+                StopCoroutine(regen);
+            }
+            regen = StartCoroutine(RegenerateStamina());
         }
-        regen = StartCoroutine(RegenerateStamina());
     }
-    
+
+    private float current = 0f;
     IEnumerator RegenerateStamina()
     {
         yield return new WaitForSeconds(1.5f);
         while (health.currentStamina < health.maxStamina)
         {
-            health.currentStamina += health.maxHealth / 100;
+            current = health.currentStamina;
+            health.currentStamina += health.maxStamina / 100;
+            //clientStaminaUI.fillAmount = Mathf.Lerp(current / health.maxStamina, health.currentStamina / (float) health.maxStamina, Time.deltaTime * 8f);
+            clientStaminaUI.fillAmount = health.currentStamina / 100f;
             yield return regenTick;
         }
         regen = null;
+    }
+    
+    [PunRPC]
+    public void SetStaminaUI()
+    {
+        if (photonView.IsMine)
+        {
+            clientStaminaUI = GameObject.Find("GUI/Canvas/Right/Stamina/Bar").GetComponent<Image>();
+        }
+        else
+        {
+            clientStaminaUI = GameObject.Find("GUI/Canvas/Left/Stamina/Bar").GetComponent<Image>();
+        }
     }
 }

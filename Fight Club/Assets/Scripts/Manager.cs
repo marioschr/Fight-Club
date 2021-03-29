@@ -45,11 +45,28 @@ namespace com.SikkimeStudios.FightClub
         private void Update()
         {
             if (both) return;
-            if (GameObject.FindGameObjectsWithTag("Player").Length == 2)
+            players = GameObject.FindGameObjectsWithTag("Player");
+            if (players.Length == 2)
             {
                 both = true;
                 loading.SetActive(false);
+                foreach (GameObject player in players)
+                {
+                    player.GetPhotonView().RPC("SetHealthUI", RpcTarget.All);
+                    player.GetPhotonView().RPC("SetStaminaUI", RpcTarget.All);
+                }
             }
+        }
+        [PunRPC]
+        void SetHealthUI()
+        {
+            GetComponent<Health>().SetHealthUI();
+        }
+
+        [PunRPC]
+        void SetStaminaUI()
+        {
+            GetComponent<Fighting>().SetStaminaUI();
         }
     }
 }

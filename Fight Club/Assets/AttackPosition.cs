@@ -24,18 +24,18 @@ public class AttackPosition : MonoBehaviourPunCallbacks
     private void OnTriggerEnter(Collider other)
     {
         if (isColliding) return;
-        isColliding = true;
         if (other.gameObject.layer == 10 && transform.root.GetComponent<Animator>().GetBool(attack.animBool)) 
         {
+            isColliding = true;
             other.gameObject.GetPhotonView().RPC("TakeDamage", RpcTarget.All, attack.power);
             Debug.Log("Attacked opponent with " + attack.attackName + ", dealt " + attack.power + " damage");
+            StartCoroutine(Reset());
         }
-        StartCoroutine(Reset());
     }
 
     IEnumerator Reset()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
         isColliding = false;
     }
 

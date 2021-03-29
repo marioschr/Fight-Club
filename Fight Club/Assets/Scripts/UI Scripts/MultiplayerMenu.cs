@@ -280,7 +280,9 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
             return false;
         }
 
-        foreach (Player p in PhotonNetwork.PlayerList)
+        Player[] players = PhotonNetwork.PlayerList;
+        //if (players.Length < 2) return false;  TODO: Uncomment Later !!!
+        foreach (Player p in players)
         {
             object isPlayerReady;
             if (p.CustomProperties.TryGetValue(GameConstants.PLAYER_READY, out isPlayerReady))
