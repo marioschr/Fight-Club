@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Character2
   m_EditorClassIdentifier: 
   characterName: Character 2
-  characterPreviewPrefab: {fileID: 8546134965267336649, guid: 910e77a405854574f84bac9091b8a8be,
+  characterPreviewPrefab: {fileID: 1437511188507616, guid: 5db44ba50c5408e4bb2873b57403ca48,
     type: 3}
-  gameplayCharacterPrefab: {fileID: 1437511188507616, guid: 5db44ba50c5408e4bb2873b57403ca48,
+  gameplayCharacterPrefab: {fileID: 1437511188507616, guid: 4f08999405ac6724ea36feb160a31714,
     type: 3}
