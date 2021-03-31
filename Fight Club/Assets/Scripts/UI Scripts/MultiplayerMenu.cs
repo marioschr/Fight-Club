@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,13 +12,13 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 {
     [Header("Login Panel")] public GameObject LoginPanel;
 
-    public InputField PlayerNameInput;
-
+    public TMP_InputField PlayerNameInput;
+    
     [Header("Selection Panel")] public GameObject SelectionPanel;
 
     [Header("Create Room Panel")] public GameObject CreateRoomPanel;
 
-    public InputField RoomNameInputField;
+    public TMP_InputField RoomNameInputField;
 
     [Header("Join Random Room Panel")] public GameObject JoinRandomRoomPanel;
 
@@ -43,8 +44,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
         cachedRoomList = new Dictionary<string, RoomInfo>();
         roomListEntries = new Dictionary<string, GameObject>();
-    
-        PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
+        PlayerNameInput.text = PlayerPrefs.GetString("PlayerName", "Player " + Random.Range(1000, 10000));
     }
 
     #endregion
@@ -238,6 +238,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
         if (!playerName.Equals(""))
         {
+            PlayerPrefs.SetString("PlayerName", playerName);
             PhotonNetwork.LocalPlayer.NickName = playerName;
             PhotonNetwork.ConnectUsingSettings();
         }
@@ -272,6 +273,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
     {
         SceneManager.UnloadSceneAsync(multiplayerMenuScene);
         GameObject.Find("Menu UI Canvas/Main Panel/Panel").SetActive(true);
+        PhotonNetwork.Disconnect();
     }
     
     private bool CheckPlayersReady()
