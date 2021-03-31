@@ -43,7 +43,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
         cachedRoomList = new Dictionary<string, RoomInfo>();
         roomListEntries = new Dictionary<string, GameObject>();
-
+    
         PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
     }
 
@@ -267,10 +267,11 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
     #endregion
 
-    private static int mainMenuScene = 0;
+    private static int mainMenuScene = 0, multiplayerMenuScene = 1;
     public void GoBackToMenu()
     {
-        SceneManager.LoadSceneAsync(mainMenuScene);
+        SceneManager.UnloadSceneAsync(multiplayerMenuScene);
+        GameObject.Find("Menu UI Canvas/Main Panel/Panel").SetActive(true);
     }
     
     private bool CheckPlayersReady()

@@ -43,7 +43,7 @@ public class Music : MonoBehaviour
            myAudio.clip = myAnonymousMusic[0];
            myAudio.Play();
        }
-        if (Input.GetKeyDown(KeyCode.M)) playRandomMyAnonymousMusic();
+        //if (Input.GetKeyDown(KeyCode.M)) playRandomMyAnonymousMusic(); EIMAI PALAVOS GAMW TO SPITI MOU, EFAA 2 WRES GIA TOUNTI KOLOGRAMMI
         
     }
  

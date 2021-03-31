@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Michsky.UI.ModernUIPack;
+using UnityEngine;
 using UnityEngine.UI;
 
 using Photon.Pun;
@@ -12,7 +13,7 @@ public class PlayerListEntry : MonoBehaviour
 
     public Image PlayerColorImage;
     public Button PlayerReadyButton;
-    public Image PlayerReadyImage;
+    public GameObject PlayerReadyImage;
 
     private int ownerId;
     private bool isPlayerReady;
@@ -82,7 +83,8 @@ public class PlayerListEntry : MonoBehaviour
 
     public void SetPlayerReady(bool playerReady)
     {
-        PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Cancel" : "Ready?";
-        PlayerReadyImage.enabled = playerReady;
+        PlayerReadyButton.GetComponent<ButtonManager>().buttonText = playerReady ? "Cancel" : "Ready?";
+        PlayerReadyButton.GetComponent<ButtonManager>().UpdateUI();
+        PlayerReadyImage.SetActive(playerReady);
     }
 }

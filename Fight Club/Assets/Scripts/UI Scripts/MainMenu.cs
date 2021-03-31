@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private static int multiplayerLobbyScene = 1, practiceScene = 3;
-
+    
     public void LoadMultiplayer()
     {
-        SceneManager.LoadScene(multiplayerLobbyScene);
-    }
+        SceneManager.LoadSceneAsync(multiplayerLobbyScene, LoadSceneMode.Additive);
+        }
 
     public void LoadPractice()
     {
