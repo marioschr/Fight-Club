@@ -14,54 +14,51 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using ExitGames.Client.Photon;
+using Photon.Pun;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
-
-namespace Photon.Pun.Demo.Asteroids
+public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
 {
-    public class PlayerOverviewPanel : MonoBehaviourPunCallbacks
+    public GameObject PlayerOverviewEntryPrefab;
+
+    private Dictionary<int, GameObject> playerListEntries;
+
+    #region UNITY
+
+    public void Awake()
     {
-        public GameObject PlayerOverviewEntryPrefab;
+        playerListEntries = new Dictionary<int, GameObject>();
 
-        private Dictionary<int, GameObject> playerListEntries;
-
-        #region UNITY
-
-        public void Awake()
+        foreach (Player p in PhotonNetwork.PlayerList)
         {
-            playerListEntries = new Dictionary<int, GameObject>();
+            GameObject entry = Instantiate(PlayerOverviewEntryPrefab);
+            entry.transform.SetParent(gameObject.transform);
+            entry.transform.localScale = Vector3.one;
+            entry.GetComponent<Text>().color = GameConstants.GetColor(p.GetPlayerNumber());
+            entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", p.NickName, p.GetScore(), GameConstants.PLAYER_MAX_LIVES);
 
-            foreach (Player p in PhotonNetwork.PlayerList)
-            {
-                GameObject entry = Instantiate(PlayerOverviewEntryPrefab);
-                entry.transform.SetParent(gameObject.transform);
-                entry.transform.localScale = Vector3.one;
-                entry.GetComponent<Text>().color = GameConstants.GetColor(p.GetPlayerNumber());
-                entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", p.NickName, p.GetScore(), AsteroidsGame.PLAYER_MAX_LIVES);
-
-                playerListEntries.Add(p.ActorNumber, entry);
-            }
+            playerListEntries.Add(p.ActorNumber, entry);
         }
-
-        #endregion
-
-        #region PUN CALLBACKS
-
-        public override void OnPlayerLeftRoom(Player otherPlayer)
-        {
-            Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
-            playerListEntries.Remove(otherPlayer.ActorNumber);
-        }
-
-        public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
-        {
-            GameObject entry;
-            if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
-            {
-                entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", targetPlayer.NickName, targetPlayer.GetScore(), targetPlayer.CustomProperties[AsteroidsGame.PLAYER_LIVES]);
-            }
-        }
-
-        #endregion
     }
+
+    #endregion
+
+    #region PUN CALLBACKS
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        Destroy(playerListEntries[otherPlayer.ActorNumber].gameObject);
+        playerListEntries.Remove(otherPlayer.ActorNumber);
+    }
+
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
+    {
+        GameObject entry;
+        if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
+        {
+            entry.GetComponent<Text>().text = string.Format("{0}\nScore: {1}\nLives: {2}", targetPlayer.NickName, targetPlayer.GetScore(), targetPlayer.CustomProperties[GameConstants.PLAYER_LIVES]);
+        }
+    }
+
+    #endregion
 }

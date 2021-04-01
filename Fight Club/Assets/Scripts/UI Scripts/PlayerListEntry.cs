@@ -47,7 +47,7 @@ public class PlayerListEntry : MonoBehaviour
                 isPlayerReady = !isPlayerReady;
                 SetPlayerReady(isPlayerReady);
 
-                playerPrefab = PlayerPrefs.GetInt("playerPrefab", 1);
+                playerPrefab = PlayerPrefs.GetInt("playerPrefab", 0);
                 Hashtable props = new Hashtable() {{GameConstants.PLAYER_READY, isPlayerReady},{GameConstants.PLAYER_PREFAB, playerPrefab}};
                 PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
