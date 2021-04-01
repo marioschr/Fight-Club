@@ -2608,7 +2608,7 @@ GameObject:
   - component: {fileID: -7675904789449994454}
   - component: {fileID: -4971919506101699353}
   m_Layer: 9
-  m_Name: ApolloCreed
+  m_Name: 1ApolloCreed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2622,7 +2622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617485682013457238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.039, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 617485681790720778}
@@ -2676,7 +2676,7 @@ CapsuleCollider:
   m_Radius: 0.3
   m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.925, z: 0}
+  m_Center: {x: 0.039, y: 0.925, z: 0}
 --- !u!54 &4692267876037033820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5514,8 +5514,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205310889160903721}
   m_LocalRotation: {x: 0.34108123, y: -0.10861433, z: -0.07128304, w: -0.9310131}
-  m_LocalPosition: {x: 0.00027, y: -0.00009, z: 0.00136}
-  m_LocalScale: {x: 0.0025000311, y: 0.0040000523, z: 0.0025000311}
+  m_LocalPosition: {x: -0, y: -0.00006, z: 0.0008}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_Children: []
   m_Father: {fileID: 617485681164634043}
   m_RootOrder: 0
@@ -5621,8 +5621,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146765852399689501}
   m_LocalRotation: {x: -0.10180165, y: -0.00000007877468, z: -0.000000081020175, w: 0.9948047}
-  m_LocalPosition: {x: 0.000000041294708, y: 0.00023005877, z: -0.00025995594}
-  m_LocalScale: {x: 0.0025, y: 0.004, z: 0.0025}
+  m_LocalPosition: {x: 0.00022, y: 0.00107, z: -0.00063}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_Children: []
   m_Father: {fileID: 617485682355231373}
   m_RootOrder: 2

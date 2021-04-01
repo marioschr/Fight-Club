@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - AttackPoint
   - Music
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

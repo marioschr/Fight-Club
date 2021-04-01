@@ -1237,7 +1237,7 @@ GameObject:
   - component: {fileID: 7447318953774713119}
   - component: {fileID: -4997326054912565670}
   m_Layer: 9
-  m_Name: Rocky
+  m_Name: 7Rocky
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1251,7 +1251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5958212217320725191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.058, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5958212217609592783}
@@ -1302,10 +1302,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.28
   m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.925, z: 0}
+  m_Center: {x: 0.058, y: 0.925, z: 0}
 --- !u!54 &3833179688974225453
 Rigidbody:
   m_ObjectHideFlags: 0

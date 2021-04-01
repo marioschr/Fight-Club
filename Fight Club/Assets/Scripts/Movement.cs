@@ -11,7 +11,6 @@ public class Movement : MonoBehaviourPunCallbacks
     private static readonly int Z = Animator.StringToHash("Z");
     public float speed;
     private bool foundOpponent = false;
-
     void Start()
     {
         cam = GameObject.FindWithTag("MainCamera").transform;
@@ -44,7 +43,7 @@ public class Movement : MonoBehaviourPunCallbacks
         }
     }
 
-    private bool FindOpponent()
+    private void FindOpponent()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 2)
@@ -55,10 +54,10 @@ public class Movement : MonoBehaviourPunCallbacks
                 {
                     opponent = player.GetPhotonView().transform;
                     foundOpponent = true;
-                    return true;
                 }
             }
         }
-        return false;
     }
+    
+    
 }

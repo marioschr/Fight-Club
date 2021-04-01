@@ -45,13 +45,11 @@ namespace com.SikkimeStudios.FightClub
         { 
             if(PhotonNetwork.IsMasterClient)
             {
-                Debug.Log("master client");
                 Spawn(0);
                 //photonView.RPC("Spawn", RpcTarget.All, 0);
             }
             else
             {
-                Debug.Log("non master client");
                 Spawn(1);
                 //photonView.RPC("Spawn", RpcTarget.All, 1);
             }
