@@ -1417,11 +1417,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1752580643970732788}
+  - {fileID: 7450721804846279151}
+  - {fileID: 12950979533733845}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

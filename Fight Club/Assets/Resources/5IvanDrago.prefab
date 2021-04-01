@@ -3361,11 +3361,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -6134744525513636230}
+  - {fileID: -6207546042249154913}
+  - {fileID: -452890841887042693}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

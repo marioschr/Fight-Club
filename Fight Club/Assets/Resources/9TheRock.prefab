@@ -5611,7 +5611,7 @@ GameObject:
   - component: {fileID: -729524889610994773}
   - component: {fileID: 127469079901275316}
   m_Layer: 9
-  m_Name: TheRock
+  m_Name: 9TheRock
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5713,11 +5713,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3371465247729550062}
+  - {fileID: -519519157745149666}
+  - {fileID: 5475855761583129142}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

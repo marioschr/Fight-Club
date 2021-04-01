@@ -2710,11 +2710,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -1558155410185682902}
+  - {fileID: -4119204345816998949}
+  - {fileID: 1454806192355740685}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

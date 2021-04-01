@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: -7728295403283813607}
   - component: {fileID: -7485894798500857602}
   m_Layer: 9
-  m_Name: Undertaker
+  m_Name: A1Undertaker
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,11 +432,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4017741884458381466}
+  - {fileID: 3720706162835181937}
+  - {fileID: -5240254696968581621}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

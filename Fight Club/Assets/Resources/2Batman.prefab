@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: -2018750794804370141}
   - component: {fileID: 6124628405523616893}
   m_Layer: 9
-  m_Name: Batman
+  m_Name: 2Batman
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,11 +491,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 2
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 1
   ObservedComponents:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6226887361518516807}
+  - {fileID: -3603885186323087691}
+  - {fileID: -1288741453714724270}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
