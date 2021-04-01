@@ -1,0 +1,57 @@
+root ground: 0 34.5 0 0.252 0.08300001 0.5349997 1 1 1
+root hips: 0 0 0 0 0 0 1 1 1
+leg left thigh: 0 9.5 4 0 0 0 1 1 1
+leg left knee: 0 0 0 0 0 0 1 1 1
+leg left ankle: 1.5 9.5 -2 0 0 0 1 1 1
+leg left toes: 0 0 0 0 0 0 1 1 1
+leg right thigh: 0 -9.5 -4 0 0 0 1 1 1
+leg right knee: 0 0 0 0 0 0 1 1 1
+leg right ankle: 1.5 -9.5 2 0 0 0 1 1 1
+leg right toes: 0 0 0 0 0 0 1 1 1
+spine lower: -8.5 0.5 1.5 0 0 0 1 1 1
+spine middle: 7 0 -1.5 0 0 0 1 1 1
+spine upper: 7 0 -0.5 0 0 0 1 1 1
+arm left shoulder 1: 0 0 0 0 0 0 1 1 1
+backflap left: 0 0 0 0 0 0 1 1 1
+arm left shoulder 2: 7.5 11 -23 0 0 0 1 1 1
+arm left elbow: -17 -15.5 -11 0 0 0 1 1 1
+arm left elbow adj: 0 0 0 0 0 0 1 1 1
+arm left wrist: 11 0 7 0 0 0 1 1 1
+arm left finger 2a: 23.5 -18.5 -77 0 0 0 1 1 1
+arm left finger 2b: 25 -32 -65.5 0 0 0 1 1 1
+arm left finger 2c: -0.5 -47 -79 0 0 0 1 1 1
+arm left finger 3a: 5.5 -11.5 -74 0 0 0 1 1 1
+arm left finger 3b: 22 -14 -67.5 0 0 0 1 1 1
+arm left finger 3c: 24 -21.5 -83.5 0 0 0 1 1 1
+arm left finger 5a: 0 0 -74 0 0 0 1 1 1
+arm left finger 5b: 0 0 -103 0 0 0 1 1 1
+arm left finger 5c: 0 0 -74 0 0 0 1 1 1
+arm left finger 4a: -4 -12.5 -74 0 0 0 1 1 1
+arm left finger 4b: 0 0 -74 0 0 0 1 1 1
+arm left finger 4c: 0 0 -74 0 0 0 1 1 1
+arm left finger 1a: 15 -20.5 -8 0 0 0 1 1 1
+arm left finger 1b: 30.5 11.5 5.5 0 0 0 1 1 1
+arm left finger 1c: 70 -0.5 36.5 0 0 0 1 1 1
+head neck lower: -1.5 -6 1.5 0 0 0 1 1 1
+head neck upper: 15.5 -15 -0.5 0 0 0 1 1 1
+arm right shoulder 1: 2.5 2.5 -8.5 0 0 0 1 1 1
+backflap right: 0 0 0 0 0 0 1 1 1
+arm right shoulder 2: -32 12.5 -18 0 0 0 1 1 1
+arm right elbow: -14.5 37 6 0 0 0 1 1 1
+arm right elbow adj: 0 0 0 0 0 0 1 1 1
+arm right wrist: 0 -5 -65.5 0 0 0 1 1 1
+arm right finger 2a: -2.5 -7 21 0 0 0 1 1 1
+arm right finger 2b: 0 0 0 0 0 0 1 1 1
+arm right finger 2c: 0 0 0 0 0 0 1 1 1
+arm right finger 3a: 0 0 21 0 0 0 1 1 1
+arm right finger 3b: 0 0 15.5 0 0 0 1 1 1
+arm right finger 3c: 8.5 0 0.5 0 0 0 1 1 1
+arm right finger 5a: 13 0 35 0 0 0 1 1 1
+arm right finger 5b: 0 0 21 0 0 0 1 1 1
+arm right finger 5c: 0 0 21 0 0 0 1 1 1
+arm right finger 4a: 8 4 25.5 0 0 0 1 1 1
+arm right finger 4b: 0 0 21 0 0 0 1 1 1
+arm right finger 4c: 0 0 21 0 0 0 1 1 1
+arm right finger 1a: 0 0 16.5 0 0 0 1 1 1
+arm right finger 1b: 0 0 0 0 0 0 1 1 1
+arm right finger 1c: 0 0 0 0 0 0 1 1 1
