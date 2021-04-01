@@ -18,6 +18,7 @@ public class GameConstants : MonoBehaviour
 
     public static Color GetColor(int colorChoice)
     {
+        Debug.Log("Color Choice:" + colorChoice);
         switch (colorChoice)
         {
             case 0: return Color.red;
