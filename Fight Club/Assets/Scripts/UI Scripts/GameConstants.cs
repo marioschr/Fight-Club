@@ -14,6 +14,7 @@ public class GameConstants : MonoBehaviour
     public const string PLAYER_LIVES = "PlayerLives";
     public const string PLAYER_READY = "IsPlayerReady";
     public const string PLAYER_LOADED_LEVEL = "PlayerLoadedLevel";
+    public const string PLAYER_PREFAB = "PlayerPrefab";
 
     public static Color GetColor(int colorChoice)
     {

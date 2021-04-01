@@ -17,7 +17,8 @@ public class PlayerListEntry : MonoBehaviour
 
     private int ownerId;
     private bool isPlayerReady;
-
+    private int playerPrefab;
+    
     #region UNITY
 
     public void OnEnable()
@@ -46,7 +47,8 @@ public class PlayerListEntry : MonoBehaviour
                 isPlayerReady = !isPlayerReady;
                 SetPlayerReady(isPlayerReady);
 
-                Hashtable props = new Hashtable() {{GameConstants.PLAYER_READY, isPlayerReady}};
+                playerPrefab = PlayerPrefs.GetInt("playerPrefab", 1);
+                Hashtable props = new Hashtable() {{GameConstants.PLAYER_READY, isPlayerReady},{GameConstants.PLAYER_PREFAB, playerPrefab}};
                 PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
                 if (PhotonNetwork.IsMasterClient)

@@ -16,7 +16,7 @@ namespace com.SikkimeStudios.FightClub
     {
         public static Manager Instance = null;
         public Text InfoText;
-        public string player_prefab;
+        public string[] player_prefabs;
         public Transform[] spawn_points;
         public GameObject loading;
         public CinemachineTargetGroup targetGroup;
@@ -58,7 +58,7 @@ namespace com.SikkimeStudios.FightClub
         [PunRPC]
         public void Spawn(int index)
         {
-            GameObject player = PhotonNetwork.Instantiate(player_prefab, spawn_points[index].position, spawn_points[index].rotation);
+            GameObject player = PhotonNetwork.Instantiate(player_prefabs[PlayerPrefs.GetInt("playerPrefab", 0)], spawn_points[index].position, spawn_points[index].rotation);
             targetGroup.AddMember(player.transform, 1f, 0.3f);
         }
 

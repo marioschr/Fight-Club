@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -17,6 +18,19 @@ public class CharacterSelect : MonoBehaviour
     private int currentCharacterIndex = 0;
     private List<GameObject> characterInstances = new List<GameObject>();
 
+    void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+ 
+    void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+ 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.SetActiveScene(scene);
+        GameObject.FindGameObjectWithTag("MainMenuUI Canvas").transform.GetChild(0).gameObject.SetActive(false);
+    }
 
     private void Start()
     {
@@ -38,7 +52,10 @@ public class CharacterSelect : MonoBehaviour
 
     public void Select()
     {
-        // piaase currentCharacterIndex
+        PlayerPrefs.SetInt("playerPrefab", currentCharacterIndex);
+        GameObject.FindGameObjectWithTag("MainMenuUI Canvas").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(5).gameObject.SetActive(true);
+        SceneManager.UnloadSceneAsync(3);
     }
 
     public void Right()

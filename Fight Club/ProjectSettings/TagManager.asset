@@ -8,6 +8,8 @@ TagManager:
   - AttackPoint
   - Music
   - PauseMenu
+  - MainMenuUI Canvas
+  - Multiplayer Canvas
   layers:
   - Default
   - TransparentFX

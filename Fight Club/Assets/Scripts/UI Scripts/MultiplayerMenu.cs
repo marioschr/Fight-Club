@@ -102,8 +102,11 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
         // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
         cachedRoomList.Clear();
 
-
-        SetActivePanel(InsideRoomPanel.name);
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        //SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(3));
+        JoinRandomRoomPanel.SetActive(false);
+        
+        //SetActivePanel(InsideRoomPanel.name);
 
         if (playerListEntries == null)
         {
