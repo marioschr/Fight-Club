@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5142aadedcba6984484aee415f5b1793, type: 3}
-  m_Name: Character1
+  m_Name: Character9
   m_EditorClassIdentifier: 
-  characterName: Apollo Creed
-  characterPreviewPrefab: {fileID: 617485682013457238, guid: 60fe6268085387340a45a14fe3ae7903,
+  characterName: Dwayne The Rock Johnson
+  characterPreviewPrefab: {fileID: 2194490310283193711, guid: 26e3b92861351df41895cf0e93ff4aec,
     type: 3}
-  gameplayCharacterPrefab: {fileID: 617485682013457238, guid: 6df21b399602a1646a9f67a1d8066fa2,
+  gameplayCharacterPrefab: {fileID: 2194490310283193711, guid: e31dffc9ebd37de47a01afee12485071,
     type: 3}

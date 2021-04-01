@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5142aadedcba6984484aee415f5b1793, type: 3}
   m_Name: Character1
   m_EditorClassIdentifier: 
-  characterName: Apollo Creed
-  characterPreviewPrefab: {fileID: 617485682013457238, guid: 60fe6268085387340a45a14fe3ae7903,
+  characterName: Character 1
+  characterPreviewPrefab: {fileID: 191538, guid: 747538ee6c84c404ba91179e28d1c32a,
     type: 3}
-  gameplayCharacterPrefab: {fileID: 617485682013457238, guid: 6df21b399602a1646a9f67a1d8066fa2,
+  gameplayCharacterPrefab: {fileID: 191538, guid: 9165e0612f6842d41a34f7470cc01e93,
     type: 3}

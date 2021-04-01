@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5142aadedcba6984484aee415f5b1793, type: 3}
   m_Name: Character2
   m_EditorClassIdentifier: 
-  characterName: Character 2
-  characterPreviewPrefab: {fileID: 1437511188507616, guid: 5db44ba50c5408e4bb2873b57403ca48,
+  characterName: Batman
+  characterPreviewPrefab: {fileID: 5665286462397386981, guid: 505c9d4bb65c8044e81c6b87a01625d0,
     type: 3}
-  gameplayCharacterPrefab: {fileID: 1437511188507616, guid: 4f08999405ac6724ea36feb160a31714,
+  gameplayCharacterPrefab: {fileID: 5665286462397386981, guid: f5f2f1abfa0c4b641bc279f13dcfe172,
     type: 3}

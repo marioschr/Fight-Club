@@ -361,8 +361,16 @@ MonoBehaviour:
   characterNameText: {fileID: 1890794793}
   turnSpeed: 90
   characters:
-  - {fileID: 11400000, guid: 6875710930ffcf0478274f00361359c9, type: 2}
+  - {fileID: 11400000, guid: b4c56925d5f097c42a83ed3718e35595, type: 2}
   - {fileID: 11400000, guid: 8f5a5a050a4f7884fb9382faba603538, type: 2}
+  - {fileID: 11400000, guid: 0b5d141c371598b4e924d0aeef2ba9b3, type: 2}
+  - {fileID: 11400000, guid: 556dedb1df355d94896aa4a69704c3a4, type: 2}
+  - {fileID: 11400000, guid: 5073147a3ca756d4fa41a9a19ba587e2, type: 2}
+  - {fileID: 11400000, guid: 8e2f5797681f3244aba080f8cde97da3, type: 2}
+  - {fileID: 11400000, guid: 67462bf5842ccf14a9cc8cbc33c907d0, type: 2}
+  - {fileID: 11400000, guid: 5dbc46fbb90b02d4fae00b3f08790cb2, type: 2}
+  - {fileID: 11400000, guid: 2bb0268bc7b12de43b403b1085d5b77a, type: 2}
+  - {fileID: 11400000, guid: 88df2d28a8ef8914e888578acf3ded02, type: 2}
 --- !u!1001 &129077300
 PrefabInstance:
   m_ObjectHideFlags: 0
