@@ -133,7 +133,7 @@ namespace com.SikkimeStudios.FightClub
             {
                 StopAllCoroutines();
             }
-            StartCoroutine(EndOfGame(photonView.name));
+            StartCoroutine(EndOfGame(GameObject.FindGameObjectWithTag("Player").GetPhotonView().Owner.NickName));
         }
 
         private void OnCountdownTimerIsExpired()
