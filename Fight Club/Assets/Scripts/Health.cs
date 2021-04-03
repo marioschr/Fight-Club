@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,22 +44,27 @@ public class Health : MonoBehaviourPunCallbacks
         if (currentHealth <= 0)
         {
             clientHealthUI.fillAmount = 0f;
+            GameObject gameOver = GameObject.FindGameObjectWithTag("GameUICanvas").transform.GetChild(1).gameObject;
+            gameOver.SetActive(true);
+            
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
                 player.GetComponent<Movement>().enabled = false;
                 player.GetComponent<Fighting>().enabled = false;
+                player.GetComponent<Rigidbody>().freezeRotation = true;
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
+                    player.GetComponent<Animator>().SetBool(Block, false);
                     player.GetComponent<Animator>().SetTrigger(KO);
-                    player.GetComponent<Rigidbody>().freezeRotation = true;
+                    gameOver.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "LOSER: " + player.GetPhotonView().name;
+
                 }
                 else
                 {
                     player.GetComponent<Animator>().SetTrigger(Won);
+                    gameOver.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "WINNER: " + player.GetPhotonView().name;
                 }
             }
-            GameObject.FindGameObjectWithTag("GameUICanvas").transform.GetChild(1).gameObject.SetActive(true);
-            // TODO: Game ends
         }
         else
         {

@@ -6,6 +6,7 @@ using Cinemachine;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -95,13 +96,13 @@ namespace com.SikkimeStudios.FightClub
             GetComponent<Fighting>().SetStaminaUI();
         }
         
-        private IEnumerator EndOfGame(string winner, int score)
+        private IEnumerator EndOfGame(string winner)
         {
             float timer = 5.0f;
 
             while (timer > 0.0f)
             {
-                InfoText.text = string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
+                InfoText.text = string.Format("{0} won because the opponent left the match.\n\n\nReturning to login screen in {1} seconds.", winner, timer.ToString("n2"));
 
                 yield return new WaitForEndOfFrame();
 
@@ -132,20 +133,7 @@ namespace com.SikkimeStudios.FightClub
             {
                 StopAllCoroutines();
             }
-
-            string winner = "";
-            int score = -1;
-
-            foreach (Player p in PhotonNetwork.PlayerList)
-            {
-                if (p.GetScore() > score)
-                {
-                    winner = p.NickName;
-                    score = p.GetScore();
-                }
-            }
-
-            StartCoroutine(EndOfGame(winner, score));
+            StartCoroutine(EndOfGame(photonView.name));
         }
 
         private void OnCountdownTimerIsExpired()
@@ -160,7 +148,7 @@ namespace com.SikkimeStudios.FightClub
         
         public void LeaveGame() {
             PhotonNetwork.LeaveRoom();
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }
