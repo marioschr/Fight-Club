@@ -49,11 +49,11 @@ public class Health : MonoBehaviourPunCallbacks
                 GetComponent<Fighting>().enabled = false;
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
-                    GetComponent<Animator>().SetTrigger(KO);
+                    player.GetComponent<Animator>().SetTrigger(KO);
                 }
                 else
                 {
-                    GetComponent<Animator>().SetTrigger(Won);
+                    player.GetComponent<Animator>().SetTrigger(Won);
                 }
             }
             // TODO: Game ends
