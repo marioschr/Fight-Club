@@ -10,6 +10,9 @@ TagManager:
   - PauseMenu
   - MainMenuUI Canvas
   - Multiplayer Canvas
+  - RoomPanel
+  - GameOver
+  - GameUICanvas
   layers:
   - Default
   - TransparentFX

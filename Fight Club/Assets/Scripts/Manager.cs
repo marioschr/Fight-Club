@@ -8,6 +8,7 @@ using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace com.SikkimeStudios.FightClub
@@ -46,12 +47,10 @@ namespace com.SikkimeStudios.FightClub
             if(PhotonNetwork.IsMasterClient)
             {
                 Spawn(0);
-                //photonView.RPC("Spawn", RpcTarget.All, 0);
             }
             else
             {
                 Spawn(1);
-                //photonView.RPC("Spawn", RpcTarget.All, 1);
             }
         }
 
@@ -121,7 +120,7 @@ namespace com.SikkimeStudios.FightClub
         {
             PhotonNetwork.Disconnect();
         }
-        
+
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             CheckEndOfGame();
@@ -157,6 +156,11 @@ namespace com.SikkimeStudios.FightClub
         void StartGame()
         {
             Debug.Log("Start Game Method");
+        }
+        
+        public void LeaveGame() {
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadSceneAsync(1);
         }
     }
 }

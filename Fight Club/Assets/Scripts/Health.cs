@@ -45,19 +45,19 @@ public class Health : MonoBehaviourPunCallbacks
             clientHealthUI.fillAmount = 0f;
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                GetComponent<Movement>().enabled = false;
-                GetComponent<Fighting>().enabled = false;
+                player.GetComponent<Movement>().enabled = false;
+                player.GetComponent<Fighting>().enabled = false;
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
                     player.GetComponent<Animator>().SetTrigger(KO);
                     player.GetComponent<Rigidbody>().freezeRotation = true;
-                    
                 }
                 else
                 {
                     player.GetComponent<Animator>().SetTrigger(Won);
                 }
             }
+            GameObject.FindGameObjectWithTag("GameUICanvas").transform.GetChild(1).gameObject.SetActive(true);
             // TODO: Game ends
         }
         else
