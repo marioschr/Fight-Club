@@ -54,15 +54,14 @@ public class Health : MonoBehaviourPunCallbacks
                 player.GetComponent<Rigidbody>().freezeRotation = true;
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
-                    player.GetComponent<Animator>().SetBool(Block, false);
                     player.GetComponent<Animator>().SetTrigger(KO);
-                    gameOver.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "LOSER: " + player.GetPhotonView().Owner.NickName;
+                    gameOver.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Loser: " + player.GetPhotonView().Owner.NickName;
 
                 }
                 else
                 {
                     player.GetComponent<Animator>().SetTrigger(Won);
-                    gameOver.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "WINNER: " + player.GetPhotonView().Owner.NickName;
+                    gameOver.transform.GetChild(0).GetChild(2).GetComponent<TMP_Text>().text = "Winner: " + player.GetPhotonView().Owner.NickName;
                 }
             }
         }
