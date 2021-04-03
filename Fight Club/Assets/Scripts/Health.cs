@@ -50,6 +50,8 @@ public class Health : MonoBehaviourPunCallbacks
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
                     player.GetComponent<Animator>().SetTrigger(KO);
+                    player.GetComponent<Rigidbody>().freezeRotation = true;
+                    
                 }
                 else
                 {
