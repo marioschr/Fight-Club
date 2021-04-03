@@ -53,8 +53,8 @@ public class CharacterSelect : MonoBehaviour
     {
         PlayerPrefs.SetInt("playerPrefab", currentCharacterIndex);
         GameObject.FindGameObjectWithTag("MainMenuUI Canvas").transform.GetChild(0).gameObject.SetActive(true);
-        GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(5).gameObject.SetActive(true);
-        SceneManager.UnloadSceneAsync(3);
+        GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(0).transform.GetChild(5).gameObject.SetActive(true);
+        SceneManager.UnloadSceneAsync(GameConstants.CHARACTER_SELECT_INDEX);
     }
 
     public void Right()

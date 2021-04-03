@@ -44,7 +44,6 @@ public class PlayerListEntry : MonoBehaviour
             Hashtable initialProps = new Hashtable()
             {
                 {GameConstants.PLAYER_READY, isPlayerReady},
-                {GameConstants.PLAYER_LIVES, GameConstants.PLAYER_MAX_LIVES}
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(initialProps);
             PhotonNetwork.LocalPlayer.SetScore(0);

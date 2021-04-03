@@ -18,10 +18,7 @@ public class PlayerPause : MonoBehaviour
 
     void Pause()
     {
-        if (pause)
-        {
-            GameObject.FindWithTag("PauseMenu").GetComponent<PauseMenu>().TogglePause();
-        }
+        GameObject.FindWithTag("PauseMenu").GetComponent<PauseMenu>().TogglePause();
         if (PauseMenu.paused)
         {
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))

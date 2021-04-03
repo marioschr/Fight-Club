@@ -22,18 +22,21 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         disconnecting = true;
-        PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene(0);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        PhotonNetwork.Disconnect();
+        //PlayerPrefs.SetInt("MultiplayerMenu", 1);
+        SceneManager.LoadScene(GameConstants.MAIN_MENU_INDEX);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Resume()
     {
-        
+        GetComponent<PauseMenu>().TogglePause();
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            if (player.layer == 9)
+            {
+                player.GetComponent<Movement>().enabled = true;
+                player.GetComponent<Fighting>().enabled = true;
+            }
+        }
     }
 }

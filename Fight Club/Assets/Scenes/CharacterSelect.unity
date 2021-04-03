@@ -434,7 +434,6 @@ MonoBehaviour:
   characterSelectDisplay: {fileID: 1992729109}
   characterPreviewParent: {fileID: 1630482370}
   characterNameText: {fileID: 1890794793}
-  turnSpeed: 90
   characters:
   - {fileID: 11400000, guid: 67462bf5842ccf14a9cc8cbc33c907d0, type: 2}
   - {fileID: 11400000, guid: b4c56925d5f097c42a83ed3718e35595, type: 2}
@@ -1702,7 +1701,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439281102}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &439281104
 Behaviour:
   m_ObjectHideFlags: 0

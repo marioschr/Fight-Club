@@ -99,14 +99,9 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
         cachedRoomList.Clear();
         SetActivePanel("none");
-        SceneManager.LoadScene(3, LoadSceneMode.Additive);
-        //SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(3));
-        //JoinRandomRoomPanel.SetActive(false);
-        
-        //SetActivePanel(InsideRoomPanel.name);
+        SceneManager.LoadScene(GameConstants.CHARACTER_SELECT_INDEX, LoadSceneMode.Additive);
 
         if (playerListEntries == null)
         {
@@ -115,8 +110,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
         foreach (Player p in PhotonNetwork.PlayerList)
         {
-            GameObject entry = Instantiate(PlayerListEntryPrefab);
-            entry.transform.SetParent(InsideRoomPanel.transform);
+            GameObject entry = Instantiate(PlayerListEntryPrefab, InsideRoomPanel.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<PlayerListEntry>().Initialize(p.ActorNumber, p.NickName);
 
@@ -271,11 +265,8 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
     #endregion
 
-    private static int multiplayerMenuScene = 1;
     public void GoBackToMenu()
     {
-        SceneManager.UnloadSceneAsync(multiplayerMenuScene);
-        GameObject.Find("Menu UI Canvas/Main Panel/Panel").SetActive(true);
         PhotonNetwork.Disconnect();
     }
     
@@ -365,11 +356,9 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
     {
         foreach (RoomInfo info in cachedRoomList.Values)
         {
-            GameObject entry = Instantiate(RoomListEntryPrefab);
-            entry.transform.SetParent(RoomListContent.transform);
+            GameObject entry = Instantiate(RoomListEntryPrefab,RoomListContent.transform);
             entry.transform.localScale = Vector3.one;
             entry.GetComponent<RoomListEntry>().Initialize(info.Name, (byte) info.PlayerCount, info.MaxPlayers);
-
             roomListEntries.Add(info.Name, entry);
         }
     }

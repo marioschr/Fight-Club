@@ -114,7 +114,7 @@ namespace com.SikkimeStudios.FightClub
         
         public override void OnDisconnected(DisconnectCause cause)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            SceneManager.LoadScene(GameConstants.MAIN_MENU_INDEX);
         }
 
         public override void OnLeftRoom()
@@ -147,8 +147,8 @@ namespace com.SikkimeStudios.FightClub
         }
         
         public void LeaveGame() {
-            PhotonNetwork.LeaveRoom();
-            SceneManager.LoadSceneAsync(0);
+            PhotonNetwork.Disconnect();
+            SceneManager.LoadSceneAsync(GameConstants.MAIN_MENU_INDEX);
         }
     }
 }

@@ -1,20 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    private static int multiplayerLobbyScene = 1, practiceScene = 3;
-    
-    public void LoadMultiplayer()
+    private void Awake()
     {
-        SceneManager.LoadSceneAsync(multiplayerLobbyScene, LoadSceneMode.Additive);
+        if (PlayerPrefs.GetInt("MultiplayerMenu", 0) == 1)
+        {
+            GameObject.FindGameObjectWithTag("MainMenuUI Canvas").transform.GetChild(0).transform.GetChild(3).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(0).gameObject.SetActive(true);
+            GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Multiplayer Canvas").transform.GetChild(0).transform.GetChild(1).gameObject.SetActive(true);
+            PlayerPrefs.SetInt("MultiplayerMenu", 0);
         }
+    }
 
     public void LoadPractice()
     {
-        SceneManager.LoadScene(practiceScene);
+        SceneManager.LoadScene(GameConstants.PRACTICE_SCENE_INDEX);
     }
 
     public void Exit()
