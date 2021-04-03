@@ -10,17 +10,6 @@ public class AttackPosition : MonoBehaviourPunCallbacks
     public Attack attack;
     private bool isColliding = false;
 
-    // Start is called before the first frame update
-    void Start()
-    { 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (isColliding) return;
@@ -28,7 +17,6 @@ public class AttackPosition : MonoBehaviourPunCallbacks
         {
             isColliding = true;
             other.gameObject.GetPhotonView().RPC("TakeDamage", RpcTarget.All, attack.power);
-            Debug.Log("Attacked opponent with " + attack.attackName + ", dealt " + attack.power + " damage");
             StartCoroutine(Reset());
         }
     }

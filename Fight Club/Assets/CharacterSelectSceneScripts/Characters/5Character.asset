@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5142aadedcba6984484aee415f5b1793, type: 3}
+  m_Name: 5Character
+  m_EditorClassIdentifier: 
+  characterName: Undertaker
+  characterPreviewPrefab: {fileID: 2062032163136224866, guid: 3c3b42b57acb0b44a88321e8ea88079e,
+    type: 3}
+  gameplayCharacterPrefab: {fileID: 2062032163136224866, guid: 9b34b45d25e2c7c4f9a12188c4c07267,
+    type: 3}

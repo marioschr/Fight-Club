@@ -271,7 +271,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
     #endregion
 
-    private static int mainMenuScene = 0, multiplayerMenuScene = 1;
+    private static int multiplayerMenuScene = 1;
     public void GoBackToMenu()
     {
         SceneManager.UnloadSceneAsync(multiplayerMenuScene);

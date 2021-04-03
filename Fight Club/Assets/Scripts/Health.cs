@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Photon.Pun;
-using Photon.Realtime;
+﻿using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,14 +26,12 @@ public class Health : MonoBehaviourPunCallbacks
         
     }
 
-    private float currentHealthTakeDmg = 100f;
     private static readonly int Block = Animator.StringToHash("Block");
     private static readonly int Won = Animator.StringToHash("Won");
 
     [PunRPC]
     public void TakeDamage(int damage)
     {
-        currentHealthTakeDmg = currentHealth;
         if (GetComponent<Animator>().GetBool(Block))
         {
             currentHealth -= Mathf.RoundToInt(damage / 1.5f);
@@ -45,25 +40,26 @@ public class Health : MonoBehaviourPunCallbacks
         {
             currentHealth -= damage;
         }
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
-            //clientHealthUI.fillAmount = Mathf.Lerp(currentHealthTakeDmg / maxHealth,0, Time.deltaTime * 8f);
             clientHealthUI.fillAmount = 0f;
-            GetComponent<Animator>().SetTrigger(KO);
-            //GetComponent<Movement>().enabled = false;
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                if (player.layer == 10)
+                GetComponent<Movement>().enabled = false;
+                GetComponent<Fighting>().enabled = false;
+                if (player.GetComponent<Health>().currentHealth <= 0)
                 {
-                    player.GetComponent<Animator>().SetTrigger(Won);
+                    GetComponent<Animator>().SetTrigger(KO);
+                }
+                else
+                {
+                    GetComponent<Animator>().SetTrigger(Won);
                 }
             }
             // TODO: Game ends
         }
         else
         {
-            //clientHealthUI.fillAmount = Mathf.Lerp(currentHealthTakeDmg / maxHealth,currentHealth / (float) maxHealth, Time.deltaTime * 8f);
             clientHealthUI.fillAmount = currentHealth / 100f;
             if (!GetComponent<Animator>().GetBool(AlreadyAttacked))
             {

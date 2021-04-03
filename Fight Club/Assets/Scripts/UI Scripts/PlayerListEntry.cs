@@ -28,6 +28,13 @@ public class PlayerListEntry : MonoBehaviour
 
     public void Start()
     {
+        foreach (Player p in PhotonNetwork.PlayerList)
+        {
+            if (p.ActorNumber == ownerId)
+            {
+                PlayerColorImage.color = GameConstants.GetColor(p.GetPlayerNumber());
+            }
+        }
         if (PhotonNetwork.LocalPlayer.ActorNumber != ownerId)
         {
             PlayerReadyButton.gameObject.SetActive(false);

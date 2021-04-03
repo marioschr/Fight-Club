@@ -30,46 +30,39 @@ public class Fighting : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftShift) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
-            Debug.Log("Left from fighting");
             photonView.RPC("Attack", RpcTarget.All, 0);
             return;
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && !Input.GetKey(KeyCode.LeftShift) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
-            Debug.Log("Right from fighting");
             photonView.RPC("Attack", RpcTarget.All, 1);
             return;
         }
         if (Input.GetKeyDown(KeyCode.LeftControl) && !animator.GetBool(Attacking))
         {
-            Debug.Log("Started Blocking from fighting");
             animator.SetBool(Block, true);
             return;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && !animator.GetBool(Attacking) && animator.GetBool(Block))
         {
-            Debug.Log("Stopped Blocking from fighting");
             animator.SetBool(Block, false);
             return;
         }
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse0) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
-            Debug.Log("Left Kick from fighting");
             photonView.RPC("Attack", RpcTarget.All, 2);
             return;
         }
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Mouse1) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
-            Debug.Log("Right Kick from fighting");
             photonView.RPC("Attack", RpcTarget.All, 3);
             return;
         }
     }
 
-    private float currentStamAttack = 100f;
     [PunRPC]
     void Attack(int attackID)
     {
@@ -77,10 +70,8 @@ public class Fighting : MonoBehaviourPunCallbacks
         {
             animator.SetBool(Block, false);
             animator.SetTrigger(attackMoves[attackID].trigger);
-            currentStamAttack = health.currentStamina;
             health.currentStamina -= attackMoves[attackID].staminaDrain;
             clientStaminaUI.fillAmount = health.currentStamina / 100f;
-            //clientStaminaUI.fillAmount = Mathf.Lerp( currentStamAttack / health.maxStamina,health.currentStamina / (float) health.maxStamina, Time.deltaTime * 8f);
             if (regen != null)
             {
                 StopCoroutine(regen);
@@ -89,15 +80,12 @@ public class Fighting : MonoBehaviourPunCallbacks
         }
     }
 
-    private float current = 0f;
     IEnumerator RegenerateStamina()
     {
         yield return new WaitForSeconds(1.5f);
         while (health.currentStamina < health.maxStamina)
         {
-            current = health.currentStamina;
             health.currentStamina += health.maxStamina / 100;
-            //clientStaminaUI.fillAmount = Mathf.Lerp(current / health.maxStamina, health.currentStamina / (float) health.maxStamina, Time.deltaTime * 8f);
             clientStaminaUI.fillAmount = health.currentStamina / 100f;
             yield return regenTick;
         }
