@@ -37,14 +37,11 @@ public class Music : MonoBehaviour
 
     void Update()
     {
-       // if (!myAudio.isPlaying) playRandomMyAnonymousMusic();
-       if (!myAudio.isPlaying) // Remove when more songs
+       if (!myAudio.isPlaying)
        {
            myAudio.clip = myAnonymousMusic[0];
            myAudio.Play();
        }
-        //if (Input.GetKeyDown(KeyCode.M)) playRandomMyAnonymousMusic(); EIMAI PALAVOS GAMW TO SPITI MOU, EFAA 2 WRES GIA TOUNTI KOLOGRAMMI
-        
     }
  
     void playRandomMyAnonymousMusic()

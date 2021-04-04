@@ -13,6 +13,7 @@ TagManager:
   - RoomPanel
   - GameOver
   - GameUICanvas
+  - HorizontalSelector
   layers:
   - Default
   - TransparentFX

@@ -23,6 +23,7 @@ public class PracticeFighting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this.gameObject.layer == 10) return;
         if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftShift) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
