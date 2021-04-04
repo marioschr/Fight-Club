@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 7447318953774713119}
   - component: {fileID: -4997326054912565670}
   - component: {fileID: -2625906035428720168}
+  - component: {fileID: -8539712906191914202}
   m_Layer: 9
   m_Name: 1Rocky
   m_TagString: Player
@@ -1291,7 +1292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cc51441a918544958f71aff933349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponent: {fileID: 0}
 --- !u!136 &8382043041370117570
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1429,6 +1429,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: AlreadyKO
+  - Type: 9
+    SynchronizeType: 0
+    Name: SkipBack
+  - Type: 9
+    SynchronizeType: 0
+    Name: SkipForward
+  - Type: 4
+    SynchronizeType: 0
+    Name: Skipping
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1584,6 +1593,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8539712906191914202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958212217320725191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f92138756877344e903ab62a97590ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponent: {fileID: 0}
 --- !u!1 &5958212217323555407
 GameObject:
   m_ObjectHideFlags: 0

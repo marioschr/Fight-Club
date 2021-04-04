@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class Movement : MonoBehaviourPunCallbacks // script για την κίνηση του χαρακτήρα
 {
-    public Transform opponent = null;
     private Transform cam;
     private Rigidbody rig;
     private Animator animator;
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Z = Animator.StringToHash("Z");
-    private bool foundOpponent = false;
     private static readonly int Block = Animator.StringToHash("Block");
+    private static readonly int SkipForward = Animator.StringToHash("SkipForward");
+    private static readonly int SkipBack = Animator.StringToHash("SkipBack");
 
     void Start()
     {
@@ -21,14 +21,11 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
         }
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        FindOpponent();
     }
 
     private void Update()
-    { 
-        if (!foundOpponent) FindOpponent();
+    {
         if (!photonView.IsMine) return;
-        transform.LookAt(opponent);
         float t_hmove = Input.GetAxis("Horizontal");
         float t_vmove = Input.GetAxis("Vertical");
 
@@ -41,25 +38,22 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
-            rig.MovePosition(transform.position + moveDir.normalized * Time.deltaTime);
+            rig.MovePosition(transform.position + moveDir.normalized * (.1f * Time.deltaTime));
+        }
+
+        if (t_hmove < -0.2f && Input.GetKeyDown(KeyCode.Space))
+        {
+            photonView.RPC("Skip", RpcTarget.All, SkipForward);
+        }
+        if (t_hmove > 0.2f && Input.GetKeyDown(KeyCode.Space))
+        {
+            photonView.RPC("Skip", RpcTarget.All, SkipBack);
         }
     }
 
-    private void FindOpponent() // βρίσκουμε τον αντίπαλο για να κοιτάμε προς την κατεύθυνση του
+    [PunRPC]
+    void Skip(int direction)
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length == 2)
-        {
-            foreach (GameObject player in players)
-            {
-                if (!player.GetPhotonView().IsMine)
-                {
-                    opponent = player.GetPhotonView().transform;
-                    foundOpponent = true;
-                }
-            }
-        }
+        animator.SetTrigger(direction);
     }
-    
-    
 }

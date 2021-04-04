@@ -3516,6 +3516,7 @@ GameObject:
   - component: {fileID: 5812892627133644555}
   - component: {fileID: -1425228647093486501}
   - component: {fileID: 7998621613375814072}
+  - component: {fileID: -1151371441563301613}
   m_Layer: 9
   m_Name: 7Superman
   m_TagString: Player
@@ -3863,6 +3864,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1151371441563301613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6041008787699740589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f92138756877344e903ab62a97590ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6041008787705814837
 GameObject:
   m_ObjectHideFlags: 0

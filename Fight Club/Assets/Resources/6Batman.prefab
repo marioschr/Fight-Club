@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: -2018750794804370141}
   - component: {fileID: 6124628405523616893}
   - component: {fileID: 5245119139695105642}
+  - component: {fileID: 4990460998364740134}
   m_Layer: 9
   m_Name: 6Batman
   m_TagString: Player
@@ -736,6 +737,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4990460998364740134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665286462397386981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f92138756877344e903ab62a97590ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5665286462411487904
 GameObject:
   m_ObjectHideFlags: 0

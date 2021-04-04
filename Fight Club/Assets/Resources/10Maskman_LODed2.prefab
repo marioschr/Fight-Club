@@ -1872,6 +1872,7 @@ GameObject:
   - component: {fileID: 370188146332870085}
   - component: {fileID: -2010004838796804589}
   - component: {fileID: -2816255590177607360}
+  - component: {fileID: -6772386684027170457}
   m_Layer: 9
   m_Name: 10Maskman_LODed2
   m_TagString: Player
@@ -2253,6 +2254,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6772386684027170457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966323044600474672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f92138756877344e903ab62a97590ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3966323044600475102
 GameObject:
   m_ObjectHideFlags: 0

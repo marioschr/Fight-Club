@@ -60,6 +60,7 @@ using UnityEngine.UI;
             this.enabled = false;
             Debug.Log("Emptying info text.", this.Text);
             this.Text.text = string.Empty;
+            GameObject.Find("GUI").GetComponent<PlayerPause>().enabled = true;
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
                 player.GetComponent<Movement>().enabled = true;
