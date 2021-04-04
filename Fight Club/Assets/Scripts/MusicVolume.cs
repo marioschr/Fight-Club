@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MusicVolume : MonoBehaviour // ορίζουμε την ένταση της μουσικής που επέλεξε ο χρήστης
 {
-    public SliderManager slider;
+    public SliderManager sliderMusic,sliderCrowd;
     private AudioSource audios;
     void Start()
     {
@@ -13,7 +13,7 @@ public class MusicVolume : MonoBehaviour // ορίζουμε την ένταση
 
     public void SetMusicVolumeSlider()
     {
-        slider.mainSlider.value = PlayerPrefs.GetFloat("MusicVolume",0.6f) * 100;
+        sliderMusic.mainSlider.value = PlayerPrefs.GetFloat("MusicVolume",0.6f) * 100;
     }
 
     public void SetMusicVolume(float volume)
@@ -21,5 +21,15 @@ public class MusicVolume : MonoBehaviour // ορίζουμε την ένταση
         audios = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
         audios.volume = volume / 100f;
         PlayerPrefs.SetFloat("MusicVolume",audios.volume);
+    }
+    
+    public void SetCrowdVolumeSlider()
+    {
+        sliderCrowd.mainSlider.value = PlayerPrefs.GetFloat("CrowdVolume",0.6f) * 100;
+    }
+
+    public void SetCrowdVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("CrowdVolume", volume / 100f);
     }
 }
