@@ -11,9 +11,9 @@ public class Fighting : MonoBehaviourPunCallbacks // Το script που γίνε
     private static readonly int Block = Animator.StringToHash("Block");
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.2f);
-    private Coroutine regen;
+    public Coroutine regen;
     private static readonly int Attacking = Animator.StringToHash("Attacking");
-    private Image clientStaminaUI;
+    public Image clientStaminaUI;
     void Start()
     {
         health = GetComponent<Health>();
@@ -79,7 +79,7 @@ public class Fighting : MonoBehaviourPunCallbacks // Το script που γίνε
         }
     }
 
-    IEnumerator RegenerateStamina() // Ξεκινάει το γέμισμα του stamina
+    public IEnumerator RegenerateStamina() // Ξεκινάει το γέμισμα του stamina
     {
         yield return new WaitForSeconds(1.5f);
         while (health.currentStamina < health.maxStamina)

@@ -6,11 +6,14 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
     private Transform cam;
     private Rigidbody rig;
     private Animator animator;
+    private Health health;
+    private Fighting fighting;
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Z = Animator.StringToHash("Z");
     private static readonly int Block = Animator.StringToHash("Block");
     private static readonly int SkipForward = Animator.StringToHash("SkipForward");
     private static readonly int SkipBack = Animator.StringToHash("SkipBack");
+    private static readonly int Skipping = Animator.StringToHash("Skipping");
 
     void Start()
     {
@@ -21,6 +24,8 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
         }
         rig = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
+        fighting = GetComponent<Fighting>();
     }
 
     private void Update()
@@ -41,11 +46,11 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
             rig.MovePosition(transform.position + moveDir.normalized * (.1f * Time.deltaTime));
         }
 
-        if (t_hmove < -0.2f && Input.GetKeyDown(KeyCode.Space))
+        if (t_hmove < -0.2f && Input.GetKeyDown(KeyCode.Space)  && !animator.GetBool(Skipping))
         {
             photonView.RPC("Skip", RpcTarget.All, SkipForward);
         }
-        if (t_hmove > 0.2f && Input.GetKeyDown(KeyCode.Space))
+        if (t_hmove > 0.2f && Input.GetKeyDown(KeyCode.Space) && !animator.GetBool(Skipping))
         {
             photonView.RPC("Skip", RpcTarget.All, SkipBack);
         }
@@ -54,6 +59,17 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
     [PunRPC]
     void Skip(int direction)
     {
-        animator.SetTrigger(direction);
+        if (health.currentStamina >= 8) // Αν έχουμε το stamina Που χρειάζεται το skipping
+        {
+            animator.SetTrigger(direction);
+            health.currentStamina -= 8;
+            fighting.clientStaminaUI.fillAmount = health.currentStamina / 100f;
+            
+            if (fighting.regen != null)
+            {
+                StopCoroutine(fighting.regen);
+            }
+            fighting.regen = StartCoroutine(fighting.RegenerateStamina());
+        }
     }
 }
