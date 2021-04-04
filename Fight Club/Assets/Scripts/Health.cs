@@ -15,6 +15,8 @@ public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την �
     private static readonly int Block = Animator.StringToHash("Block");
     private static readonly int Won = Animator.StringToHash("Won");
     private Image clientHealthUI;
+    public AudioSource playAudio;
+    public AudioClip[] punchSounds;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την �
     [PunRPC] // Αφαιρούμε το health από το attack
     public void TakeDamage(int damage)
     {
+        playAudio.clip = punchSounds[Random.Range(0, 5)];
+        playAudio.Play();
         if (GetComponent<Animator>().GetBool(Block))
         {
             currentHealth -= Mathf.RoundToInt(damage / 1.5f);
@@ -41,7 +45,8 @@ public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την �
             gameOver.SetActive(true);
             GameObject.Find("GUI/Canvas/Right/Health/Bar").SetActive(false);
             GameObject.Find("GUI/Canvas/Left/Health/Bar").SetActive(false);
-            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
                 player.GetComponent<Movement>().enabled = false;
@@ -49,7 +54,10 @@ public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την �
                 player.GetComponent<Rigidbody>().freezeRotation = true;
                 if (player.GetComponent<Health>().currentHealth <= 0)
                 {
-                    player.GetComponent<Animator>().SetTrigger(KO);
+                    if (!player.GetComponent<Animator>().GetBool("AlreadyKO"))
+                    {
+                        player.GetComponent<Animator>().SetTrigger(KO);
+                    }
                     gameOver.transform.GetChild(0).GetChild(3).GetComponent<TMP_Text>().text = "Loser: " + player.GetPhotonView().Owner.NickName;
 
                 }

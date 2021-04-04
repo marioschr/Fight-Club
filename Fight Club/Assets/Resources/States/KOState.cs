@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KOState : StateMachineBehaviour
 {
+    private static readonly int AlreadyKo = Animator.StringToHash("AlreadyKO");
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -13,6 +15,7 @@ public class KOState : StateMachineBehaviour
             {
                 animator.SetBool(parameter.name,false);
             }
+            animator.SetBool(AlreadyKo, true);
         }
     }
 
