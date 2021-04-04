@@ -15,8 +15,8 @@ public class KOState : StateMachineBehaviour
             {
                 animator.SetBool(parameter.name,false);
             }
-            animator.SetBool(AlreadyKo, true);
         }
+        animator.SetBool(AlreadyKo, true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2668fc653be8fad43a33dafd85dd4619, type: 3}
   m_Name: LeftKick
   m_EditorClassIdentifier: 
-  staminaDrain: 28
-  power: 30
+  staminaDrain: 25
+  power: 8
   attackName: Left Kick
   trigger: KickLeft
   animBool: KickLeft1

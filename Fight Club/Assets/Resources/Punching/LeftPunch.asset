@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeftPunch
   m_EditorClassIdentifier: 
   staminaDrain: 10
-  power: 15
+  power: 5
   attackName: Left Punch
   trigger: Left
   animBool: Left1

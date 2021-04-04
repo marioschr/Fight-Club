@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2668fc653be8fad43a33dafd85dd4619, type: 3}
   m_Name: RightPunch
   m_EditorClassIdentifier: 
-  staminaDrain: 7
-  power: 12
+  staminaDrain: 12
+  power: 6
   attackName: Right Punch
   trigger: Right
   animBool: Right1
