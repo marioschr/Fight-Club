@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f1e924bc46b06eb4d91e00593917aeb7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Sternbach Hollow
+  fontNames:
+  - Sternbach Hollow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f06ba02b6e1ee9d438f4f96bf7bdc26d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

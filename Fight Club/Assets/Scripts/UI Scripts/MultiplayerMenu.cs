@@ -260,7 +260,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        PhotonNetwork.LoadLevel(2);
+        PhotonNetwork.LoadLevel(GameConstants.GAME_SCENE_INDEX);
     }
 
     #endregion

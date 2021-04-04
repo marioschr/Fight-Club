@@ -9,7 +9,6 @@ public class Movement : MonoBehaviourPunCallbacks
     private Animator animator;
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Z = Animator.StringToHash("Z");
-    public float speed;
     private bool foundOpponent = false;
     void Start()
     {
@@ -39,7 +38,7 @@ public class Movement : MonoBehaviourPunCallbacks
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; 
-            rig.MovePosition(transform.position + moveDir.normalized * (speed * Time.deltaTime));
+            rig.MovePosition(transform.position + moveDir.normalized * Time.deltaTime);
         }
     }
 

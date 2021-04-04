@@ -19,7 +19,15 @@ public class FightersCenter : MonoBehaviour
             }
             else return;
         }
-        
+
+        foreach (GameObject player in players)
+        {
+            if (player == null)
+            {
+                both = false;
+                return;
+            }
+        }
         transform.position = Vector3.Lerp(players[0].transform.position, players[1].transform.position, 0.5f);
         Vector3 delta = players[0].transform.position - players[1].transform.position;
         Quaternion look = Quaternion.LookRotation(delta);

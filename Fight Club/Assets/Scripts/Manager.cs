@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using Michsky.UI.ModernUIPack;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
@@ -11,6 +12,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace com.SikkimeStudios.FightClub
 { 
@@ -28,6 +30,8 @@ namespace com.SikkimeStudios.FightClub
         private void Awake()
         {
             Instance = this;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
         }
 
         public override void OnEnable()
@@ -149,6 +153,28 @@ namespace com.SikkimeStudios.FightClub
         public void LeaveGame() {
             PhotonNetwork.Disconnect();
             SceneManager.LoadSceneAsync(GameConstants.MAIN_MENU_INDEX);
+        }
+
+        public void Rematch()
+        {
+            //photonView.RPC("RequestRematch", RpcTarget.All);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.LoadLevel(GameConstants.GAME_SCENE_INDEX);
+            }
+        }
+
+        [PunRPC]
+        void RequestRematch()
+        {
+            if (photonView.IsMine)
+            {
+                Hashtable props = new Hashtable
+                {
+                    {"RequestedRematch", true}
+                };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(props);
+            }
         }
     }
 }

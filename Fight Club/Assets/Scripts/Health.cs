@@ -12,6 +12,8 @@ public class Health : MonoBehaviourPunCallbacks
     private static readonly int Attacked = Animator.StringToHash("Attacked");
     private static readonly int AlreadyAttacked = Animator.StringToHash("AlreadyAttacked");
     private static readonly int KO = Animator.StringToHash("KO");
+    private static readonly int Block = Animator.StringToHash("Block");
+    private static readonly int Won = Animator.StringToHash("Won");
     private Image clientHealthUI;
     
     // Start is called before the first frame update
@@ -20,15 +22,6 @@ public class Health : MonoBehaviourPunCallbacks
         currentHealth = maxHealth;
         currentStamina = maxStamina;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private static readonly int Block = Animator.StringToHash("Block");
-    private static readonly int Won = Animator.StringToHash("Won");
 
     [PunRPC]
     public void TakeDamage(int damage)

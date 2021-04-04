@@ -3,16 +3,14 @@
 public class PlayerPause : MonoBehaviour
 {
     private bool pause;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    private static readonly int X = Animator.StringToHash("X");
+    private static readonly int Z = Animator.StringToHash("Z");
+    
     // Update is called once per frame
     void Update()
     {
-        pause = Input.GetKeyDown(KeyCode.G);
+        pause = Input.GetKeyDown(KeyCode.Escape);
         if (pause) Pause();
     }
 
@@ -25,8 +23,11 @@ public class PlayerPause : MonoBehaviour
             {
                 if (player.layer == 9)
                 {
+                    player.GetComponent<Animator>().SetFloat(X, 0);
+                    player.GetComponent<Animator>().SetFloat(Z, 0);
                     player.GetComponent<Movement>().enabled = false;
                     player.GetComponent<Fighting>().enabled = false;
+                    return;
                 }
             }
         }
@@ -36,8 +37,11 @@ public class PlayerPause : MonoBehaviour
             {
                 if (player.layer == 9)
                 {
+                    player.GetComponent<Animator>().SetFloat(X, 0);
+                    player.GetComponent<Animator>().SetFloat(Z, 0);
                     player.GetComponent<Movement>().enabled = true;
                     player.GetComponent<Fighting>().enabled = true;
+                    return;
                 }
             }
         }

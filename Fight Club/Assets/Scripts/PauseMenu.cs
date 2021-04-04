@@ -4,7 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviourPunCallbacks
 {
     public static bool paused = false;
     private bool disconnecting = false;
@@ -22,9 +22,7 @@ public class PauseMenu : MonoBehaviour
     public void Quit()
     {
         disconnecting = true;
-        PhotonNetwork.Disconnect();
-        //PlayerPrefs.SetInt("MultiplayerMenu", 1);
-        SceneManager.LoadScene(GameConstants.MAIN_MENU_INDEX);
+        PhotonNetwork.LeaveRoom();
     }
 
     public void Resume()
@@ -36,7 +34,14 @@ public class PauseMenu : MonoBehaviour
             {
                 player.GetComponent<Movement>().enabled = true;
                 player.GetComponent<Fighting>().enabled = true;
+                return;
             }
         }
+    }
+    
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene(GameConstants.MAIN_MENU_INDEX);
+        base.OnLeftRoom();
     }
 }
