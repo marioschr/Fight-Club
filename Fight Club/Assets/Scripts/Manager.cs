@@ -157,23 +157,9 @@ namespace com.SikkimeStudios.FightClub
 
         public void Rematch()
         {
-            //photonView.RPC("RequestRematch", RpcTarget.All);
             if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.LoadLevel(GameConstants.GAME_SCENE_INDEX);
-            }
-        }
-
-        [PunRPC]
-        void RequestRematch()
-        {
-            if (photonView.IsMine)
-            {
-                Hashtable props = new Hashtable
-                {
-                    {"RequestedRematch", true}
-                };
-                PhotonNetwork.LocalPlayer.SetCustomProperties(props);
             }
         }
     }
