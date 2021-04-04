@@ -10,6 +10,8 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
     private static readonly int X = Animator.StringToHash("X");
     private static readonly int Z = Animator.StringToHash("Z");
     private bool foundOpponent = false;
+    private static readonly int Block = Animator.StringToHash("Block");
+
     void Start()
     {
         cam = GameObject.FindWithTag("MainCamera").transform;
@@ -30,6 +32,7 @@ public class Movement : MonoBehaviourPunCallbacks // script για την κίν
         float t_hmove = Input.GetAxis("Horizontal");
         float t_vmove = Input.GetAxis("Vertical");
 
+        if (animator.GetBool(Block)) return;
         animator.SetFloat(Z, t_hmove, 0.05f, Time.deltaTime);
         animator.SetFloat(X, -t_vmove, 0.05f, Time.deltaTime);
         Vector3 direction = new Vector3(t_hmove, 0f, t_vmove).normalized;
