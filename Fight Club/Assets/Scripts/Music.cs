@@ -6,7 +6,7 @@ public class Music : MonoBehaviour
     AudioSource myAudio;
     public AudioClip[] myAnonymousMusic;
  
-    void Start()
+    void Start() // Ορίζουμε την ενταση της μουσικής κατά την έναρξη
     {
         myAudio = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
         myAudio.volume = PlayerPrefs.GetFloat("MusicVolume",0.6f);
@@ -36,7 +36,7 @@ public class Music : MonoBehaviour
     }
 
     void Update()
-    {
+    { // παίζουμε κάποιο τραγούδι
        if (!myAudio.isPlaying)
        {
            myAudio.clip = myAnonymousMusic[0];
@@ -44,7 +44,7 @@ public class Music : MonoBehaviour
        }
     }
  
-    void playRandomMyAnonymousMusic()
+    void playRandomMyAnonymousMusic() // τυχαία επιλογή τραγουδιού
     {
         do {
             myAudio.clip = myAnonymousMusic[Random.Range(0, myAnonymousMusic.Length)];

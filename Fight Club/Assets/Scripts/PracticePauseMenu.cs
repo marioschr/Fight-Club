@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PracticePauseMenu : MonoBehaviour
+public class PracticePauseMenu : MonoBehaviour // Pause Menu κατά το practice
 {
     public static bool paused,pause = false;
     public GameObject player;

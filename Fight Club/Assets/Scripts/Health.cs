@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviourPunCallbacks
+public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την ζωή των παιχτών και ελέγχουμε αν νίκησε κάποιος
 {
     public int maxHealth = 100;
     public int currentHealth;
@@ -23,7 +23,7 @@ public class Health : MonoBehaviourPunCallbacks
         currentStamina = maxStamina;
     }
 
-    [PunRPC]
+    [PunRPC] // Αφαιρούμε το health από το attack
     public void TakeDamage(int damage)
     {
         if (GetComponent<Animator>().GetBool(Block))
@@ -34,7 +34,7 @@ public class Health : MonoBehaviourPunCallbacks
         {
             currentHealth -= damage;
         }
-        if (currentHealth <= 0)
+        if (currentHealth <= 0) // Αν η ζωή φτάσει το 0, ο παίχτης αυτός χάνει και κερδίζει ο αντίπαλος. εκτελούνται τα ανάλογα animations
         {
             clientHealthUI.fillAmount = 0f;
             GameObject gameOver = GameObject.FindGameObjectWithTag("GameUICanvas").transform.GetChild(1).gameObject;

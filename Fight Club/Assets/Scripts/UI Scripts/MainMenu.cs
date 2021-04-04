@@ -1,8 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour // Script Που ανοίγει το practicescece ή κλείνει το παιχνίδι
 {
     private void Awake()
     {

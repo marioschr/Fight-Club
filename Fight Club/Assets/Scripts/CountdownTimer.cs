@@ -1,29 +1,11 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CountdownTimer.cs" company="Exit Games GmbH">
-//   Part of: Photon Unity Utilities,
-// </copyright>
-// <summary>
-// This is a basic CountdownTimer. In order to start the timer, the MasterClient can add a certain entry to the Custom Room Properties,
-// which contains the property's name 'StartTime' and the actual start time describing the moment, the timer has been started.
-// To have a synchronized timer, the best practice is to use PhotonNetwork.Time.
-// In order to subscribe to the CountdownTimerHasExpired event you can call CountdownTimer.OnCountdownTimerHasExpired += OnCountdownTimerIsExpired;
-// from Unity's OnEnable function for example. For unsubscribing simply call CountdownTimer.OnCountdownTimerHasExpired -= OnCountdownTimerIsExpired;.
-// You can do this from Unity's OnDisable function for example.
-// </summary>
-// <author>developer@exitgames.com</author>
-// --------------------------------------------------------------------------------------------------------------------
-
-using ExitGames.Client.Photon;
+﻿using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 
-    public class CountdownTimer : MonoBehaviourPunCallbacks
+    public class CountdownTimer : MonoBehaviourPunCallbacks // Script για την αντίστροφη μέτρηση κατά την έναρξη του αγώνα
     {
-        /// <summary>
-        ///     OnCountdownTimerHasExpired delegate.
-        /// </summary>
         public delegate void CountdownTimerHasExpired();
 
         public const string CountdownStartTime = "StartTime";
@@ -37,11 +19,7 @@ using UnityEngine.UI;
 
         [Header("Reference to a Text component for visualizing the countdown")]
         public Text Text;
-
-
-        /// <summary>
-        ///     Called when the timer has expired.
-        /// </summary>
+        
         public static event CountdownTimerHasExpired OnCountdownTimerHasExpired;
 
 
@@ -52,17 +30,8 @@ using UnityEngine.UI;
 
         public override void OnEnable()
         {
-            Debug.Log("OnEnable CountdownTimer");
             base.OnEnable();
-
-            // the starttime may already be in the props. look it up.
             Initialize();
-        }
-
-        public override void OnDisable()
-        {
-            base.OnDisable();
-            Debug.Log("OnDisable CountdownTimer");
         }
 
 
@@ -70,7 +39,7 @@ using UnityEngine.UI;
         {
             if (!this.isTimerRunning) return;
 
-            float countdown = TimeRemaining();
+            float countdown = TimeRemaining(); // Ανανέωση του χρόνου στο text για κάθε second
             this.Text.text = string.Format("Game starts in {0} seconds", countdown.ToString("n0"));
 
             if (countdown > 0.0f) return;
@@ -85,7 +54,7 @@ using UnityEngine.UI;
             this.enabled = true;
         }
 
-        private void OnTimerEnds()
+        private void OnTimerEnds() // Όταν τελειώσει ο χρόνος ενεργοποιούμε την κίνηση των χαρακτήρων
         {
             this.isTimerRunning = false;
             this.enabled = false;

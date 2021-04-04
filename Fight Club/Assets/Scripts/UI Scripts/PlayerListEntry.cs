@@ -7,7 +7,7 @@ using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class PlayerListEntry : MonoBehaviour
+public class PlayerListEntry : MonoBehaviour // Script Που ρυθμίζει τον παίχτη όταν μπει σε ένα room
 {
     [Header("UI References")] public Text PlayerNameText;
 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerPause : MonoBehaviour
+public class PlayerPause : MonoBehaviour // Έλεγχος αν πατήσει το ESC o χρήστης για να ανοίξει το pause menu
 {
     private bool pause;
 

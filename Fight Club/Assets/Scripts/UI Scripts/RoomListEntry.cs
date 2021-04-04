@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Photon.Pun;
+﻿using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoomListEntry : MonoBehaviour
+public class RoomListEntry : MonoBehaviour // script για την δημιουργία και ανανέωση των rooms στο Show Room List
 {
     public Text RoomNameText;
     public Text RoomPlayersText;

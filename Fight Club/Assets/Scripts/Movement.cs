@@ -1,7 +1,7 @@
 ﻿using Photon.Pun;
 using UnityEngine;
 
-public class Movement : MonoBehaviourPunCallbacks
+public class Movement : MonoBehaviourPunCallbacks // script για την κίνηση του χαρακτήρα
 {
     public Transform opponent = null;
     private Transform cam;
@@ -42,7 +42,7 @@ public class Movement : MonoBehaviourPunCallbacks
         }
     }
 
-    private void FindOpponent()
+    private void FindOpponent() // βρίσκουμε τον αντίπαλο για να κοιτάμε προς την κατεύθυνση του
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length == 2)

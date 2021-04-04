@@ -4,7 +4,7 @@ using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviourPunCallbacks
+public class PauseMenu : MonoBehaviourPunCallbacks // Pause menu για την παύση στον αγώνα
 {
     public static bool paused = false;
     private bool disconnecting = false;

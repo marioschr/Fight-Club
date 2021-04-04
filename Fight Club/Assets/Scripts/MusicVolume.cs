@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Michsky.UI.ModernUIPack;
+﻿using Michsky.UI.ModernUIPack;
 using UnityEngine;
 
-public class MusicVolume : MonoBehaviour
+public class MusicVolume : MonoBehaviour // ορίζουμε την ένταση της μουσικής που επέλεξε ο χρήστης
 {
     public SliderManager slider;
-    private AudioSource audio;
+    private AudioSource audios;
     void Start()
     {
-        audio = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
+        audios = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
     }
 
 
@@ -20,8 +18,8 @@ public class MusicVolume : MonoBehaviour
 
     public void SetMusicVolume(float volume)
     {
-        audio = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
-        audio.volume = volume / 100f;
-        PlayerPrefs.SetFloat("MusicVolume",audio.volume);
+        audios = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
+        audios.volume = volume / 100f;
+        PlayerPrefs.SetFloat("MusicVolume",audios.volume);
     }
 }

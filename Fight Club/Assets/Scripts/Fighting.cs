@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fighting : MonoBehaviourPunCallbacks
+public class Fighting : MonoBehaviourPunCallbacks // Το script που γίνεται ο χειρισμός των επιθέσεων
 {
     private Health health; 
     private Animator animator;
@@ -22,11 +20,11 @@ public class Fighting : MonoBehaviourPunCallbacks
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!photonView.IsMine) return; // Ελέγχουμε αν ο χαρακτήρας είναι ο δικός μας και όχι του αντιπάλου
         
+        //Ανάλογα τα κουμπιά που θα πατήσει να γίνει το αντίστοιχο attack
         if (Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKey(KeyCode.LeftShift) && !animator.GetBool(Attacking))
         {
             animator.SetBool(Block, false);
@@ -63,10 +61,11 @@ public class Fighting : MonoBehaviourPunCallbacks
         }
     }
 
+    // Αποστολή της επίθεσης για να εκτελεστεί από τον server
     [PunRPC]
     void Attack(int attackID)
     {
-        if (health.currentStamina >= attackMoves[attackID].staminaDrain)
+        if (health.currentStamina >= attackMoves[attackID].staminaDrain) // Αν έχουμε το stamina Που χρειάζεται η επίθεση
         {
             animator.SetBool(Block, false);
             animator.SetTrigger(attackMoves[attackID].trigger);
@@ -80,7 +79,7 @@ public class Fighting : MonoBehaviourPunCallbacks
         }
     }
 
-    IEnumerator RegenerateStamina()
+    IEnumerator RegenerateStamina() // Ξεκινάει το γέμισμα του stamina
     {
         yield return new WaitForSeconds(1.5f);
         while (health.currentStamina < health.maxStamina)
@@ -93,7 +92,7 @@ public class Fighting : MonoBehaviourPunCallbacks
     }
     
     [PunRPC]
-    public void SetStaminaUI()
+    public void SetStaminaUI() // Ορίζουμε ποια μπάρα health και stamina είναι η δική μας
     {
         if (photonView.IsMine)
         {

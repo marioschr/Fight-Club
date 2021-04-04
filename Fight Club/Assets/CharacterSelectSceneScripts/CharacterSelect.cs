@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelect : MonoBehaviour
+public class CharacterSelect : MonoBehaviour // Script για την επιλογή χαρακτήρα
 {
 
 

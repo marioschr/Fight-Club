@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayersManager : MonoBehaviour
+public class PlayersManager : MonoBehaviour // Στο script αυτό προσθέτουμε τους 2 παίχτες στο target group που σημαδεύει η camera
 {
     private CinemachineTargetGroup ctg;
     public bool both = false;
@@ -14,7 +12,6 @@ public class PlayersManager : MonoBehaviour
         ctg = GetComponent<CinemachineTargetGroup>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!both)

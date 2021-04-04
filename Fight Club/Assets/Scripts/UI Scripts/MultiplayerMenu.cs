@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -8,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class MultiplayerMenu : MonoBehaviourPunCallbacks
+public class MultiplayerMenu : MonoBehaviourPunCallbacks // Το βασικό script Που χειρίζεται το κομμάτι της σύνδεσης στον server, στα rooms κτλ
 {
     [Header("Login Panel")] public GameObject LoginPanel;
 
@@ -94,7 +93,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
         RoomOptions options = new RoomOptions {MaxPlayers = 2};
 
-        PhotonNetwork.CreateRoom(roomName, options, null);
+        PhotonNetwork.CreateRoom(roomName, options);
     }
 
     public override void OnJoinedRoom()
@@ -147,8 +146,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        GameObject entry = Instantiate(PlayerListEntryPrefab);
-        entry.transform.SetParent(InsideRoomPanel.transform);
+        GameObject entry = Instantiate(PlayerListEntryPrefab, InsideRoomPanel.transform);
         entry.transform.localScale = Vector3.one;
         entry.GetComponent<PlayerListEntry>().Initialize(newPlayer.ActorNumber, newPlayer.NickName);
 
@@ -214,7 +212,7 @@ public class MultiplayerMenu : MonoBehaviourPunCallbacks
         
         RoomOptions options = new RoomOptions {MaxPlayers = 2, PlayerTtl = 10000};
 
-        PhotonNetwork.CreateRoom(roomName, options, null);
+        PhotonNetwork.CreateRoom(roomName, options);
     }
 
     public void OnJoinRandomRoomButtonClicked()

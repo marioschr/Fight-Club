@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-public class Tutorial : MonoBehaviour
+public class Tutorial : MonoBehaviour // Το script για το tutorial στο PracticeScene
 {
     private Animator animator;
     public TMP_Text textbox;

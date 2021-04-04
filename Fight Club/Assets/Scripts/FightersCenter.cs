@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FightersCenter : MonoBehaviour
+public class FightersCenter : MonoBehaviour // Το script αυτό χρησιμοποιείται για να βρίσκουμε το κέντρο των δύο αντιπάλων αλλά και την γωνία που δημιουργείται
 {
     private bool both = false;
     private GameObject[] players;
 
-    // Update is called once per frame
     void Update()
     {
         if (!both)
