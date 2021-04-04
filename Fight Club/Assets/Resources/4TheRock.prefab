@@ -5666,7 +5666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cc51441a918544958f71aff933349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponent: {fileID: 0}
 --- !u!136 &-1997716824312775295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5840,6 +5839,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bbaa4727f14abd49a637e886e5e249d, type: 2}
   - {fileID: 11400000, guid: 1528f2c1b37fa3745b8221a79877a955, type: 2}
   - {fileID: 11400000, guid: 0a42dcf999d07694b8b36d214536e74d, type: 2}
+  clientStaminaUI: {fileID: 0}
 --- !u!114 &127469079901275316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5971,6 +5971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f92138756877344e903ab62a97590ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opponent: {fileID: 0}
 --- !u!1 &2194490310302199899
 GameObject:
   m_ObjectHideFlags: 0

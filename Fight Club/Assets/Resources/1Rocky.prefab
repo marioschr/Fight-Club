@@ -1474,6 +1474,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8bbaa4727f14abd49a637e886e5e249d, type: 2}
   - {fileID: 11400000, guid: 1528f2c1b37fa3745b8221a79877a955, type: 2}
   - {fileID: 11400000, guid: 0a42dcf999d07694b8b36d214536e74d, type: 2}
+  clientStaminaUI: {fileID: 0}
 --- !u!114 &-4997326054912565670
 MonoBehaviour:
   m_ObjectHideFlags: 0

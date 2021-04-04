@@ -43,8 +43,8 @@ public class Health : MonoBehaviourPunCallbacks // Ρυθμίζουμε την �
             clientHealthUI.fillAmount = 0f;
             GameObject gameOver = GameObject.FindGameObjectWithTag("GameUICanvas").transform.GetChild(1).gameObject;
             gameOver.SetActive(true);
-            GameObject.Find("GUI/Canvas/Right/Health/Bar").SetActive(false);
-            GameObject.Find("GUI/Canvas/Left/Health/Bar").SetActive(false);
+            GameObject.Find("GUI/Canvas/Right/").SetActive(false);
+            GameObject.Find("GUI/Canvas/Left/").SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
